@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+.hero-img{
+padding-top: 20px;
+margin-bottom: 4% ;
+mix-blend-mode: multiply;
+width: 50%;
+}
+header {
+  background-color: #FF6A00;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100vw; 
+}
+
+header .container {
+  padding: 1rem;
+}
+
+header h1 {
+  color: white;
+}
+header nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.hero-section {
+  background-color: #FF6A00;
+  color: white;
+  width: 100vw; 
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.hero-section h2,
+.hero-section p {
+  margin: 0.5rem 0;
+}
+
+.hero-section .btn-container {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+}
+
+
+.btn-warning, .btn-dark{
+  border-radius: 35px;
+}
+
