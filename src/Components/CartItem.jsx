@@ -10,7 +10,7 @@ const CartItem = ({ name, price, imageUrl, quantity, onUpdateQuantity }) => {
   };
 
   return (
-    <div className="col-md-3 p-1 d-flex align-items-stretch">
+    <div className="col-md-2 d-flex align-items-stretch my-4">
       <div className="card h-100">
         <img src={imageUrl} alt={name} className="img-fluid mx-auto card-img-top" style={{ height: '200px', objectFit: 'contain' }} />
         <div className="card-body d-flex flex-column">
