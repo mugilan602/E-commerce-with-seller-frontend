@@ -57,8 +57,10 @@ const SellerSignup = () => {
             >
               {isLoading ? "Signing up..." : "Sign Up"}
             </button>
-            <p>Already a seller?</p>
-            <Link to="/seller/login" > Login </Link>
+            <div className="d-flex justify-content-center my-3">
+              <p className="pr-2">Already a seller?</p>
+              <Link to="/seller/login" > Login </Link>
+            </div>
           </form>
         </div>
       </div>

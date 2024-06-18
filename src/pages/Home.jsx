@@ -70,7 +70,7 @@ const Home = () => {
                 <li className="nav-item">
                   {user ? (
                     <>
-                      <span className="text-white ml-3 mr-3">{user.email}</span>
+                      <span className="my-5 text-white ml-3 mr-3">{user.email}</span>
                       <Link className="btn btn-outline-light" to="/cart" >Cart</Link>
                       <button className="btn btn-outline-light" onClick={handleClick}>Logout</button>
                     </>

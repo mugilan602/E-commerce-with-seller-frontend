@@ -27,7 +27,7 @@ function Category() {
 
     fetchCategoryProducts();
   }, [categoryName]); // Dependency array includes only categoryName
-
+console.log(products);
   return (
     <div className="container py-5">
       <h3 className="text-center mb-4">{categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} Products</h3>
@@ -38,6 +38,7 @@ function Category() {
           products.map((product, index) => (
             <ProductCard
               key={index}
+              id={product._id}
               name={product.name}
               price={product.price}
               imageUrl={product.image_url}

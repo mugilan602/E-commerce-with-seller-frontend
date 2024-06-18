@@ -8,7 +8,7 @@ export const useSellerLogout = () => {
     const logout = () => {
         localStorage.removeItem('seller');
         dispatch({ type: "LOGOUT" });
-        navigate("/");
+        navigate("/seller/login");
 
     };
 

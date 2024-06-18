@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
-import "../styles/login.css";  
+import "../styles/login.css";
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -16,10 +16,10 @@ const Login = () => {
 
   return (
     <div>
-      <p>Seller?</p>
-      <Link to="/seller/login">Login</Link>
+      {/* <p>Seller?</p>
+      <Link to="/seller/login">Login</Link> */}
       <div className="container">
-        <div className="row justify-content-center login">
+        <div className="row justify-content-center login my-5">
           <div className="col-md-4">
             <form onSubmit={handleSubmit} className="shadow-lg p-4 rounded bg-white">
               <h3 className="mb-4 text-center">Login</h3>
@@ -61,9 +61,11 @@ const Login = () => {
               >
                 {isLoading ? "Logging in..." : "Login"}
               </button>
+              <div className="d-flex justify-content-center my-3">
+                <p>Not a user?</p>
+                <Link to="/signup">Signup</Link>
+              </div>
 
-              <p>Not a user?</p>
-              <Link to="/signup">Signup</Link>
             </form>
           </div>
         </div>

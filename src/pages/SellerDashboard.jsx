@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import ProductCard from '../Components/ProductCard';
 import { useSellerLogout } from '../hooks/useSellerLogout';
-import { useSellerAuthContext } from '../hooks/useSellerAuthContext';
 import { useNavigate } from "react-router-dom";
+import DashboardCard from '../Components/DashboardCard';
 
 const SellerDashboard = () => {
+  const seller=JSON.parse(localStorage.getItem('seller'))
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); 
 
   const { logout } = useSellerLogout();
-  const { seller } = useSellerAuthContext();
 
   const handleLogout = () => {
     logout();
@@ -33,23 +32,25 @@ const SellerDashboard = () => {
         if (response.ok) {
           setProducts(json);
         } else {
-          setError('Failed to fetch latest products');
+          setError('Failed to fetch products');
         }
       } catch (error) {
         console.error('Error fetching latest products:', error);
-        setError('Failed to fetch latest products');
+        setError('Failed to fetch products');
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchProducts();
-  }, [seller]);
+  }, [seller.token]);
 
   return (
     <div>
       <section className="container py-5">
+       
         <div className="d-flex justify-content-end mb-3">
+        <span className='mx-4 my-2'>{seller.email}</span>
           <button className="btn btn-primary me-2" onClick={addProduct}>
             Add product
           </button>
@@ -67,7 +68,7 @@ const SellerDashboard = () => {
           <div className="row row-cols-1 row-cols-md-3">
             {products.length > 0 ? (
               products.map((product) => (
-                <ProductCard
+                <DashboardCard
                   key={product._id}
                   id={product._id}
                   name={product.name}
