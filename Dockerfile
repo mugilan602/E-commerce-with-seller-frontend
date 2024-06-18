@@ -1,5 +1,5 @@
-# Use the official Node.js 18 image as the base image
-FROM node:18
+# Use the official Node.js LTS version as the base image
+FROM node:14
 
 # Create and change to the app directory
 WORKDIR /app
@@ -7,49 +7,31 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files to the working directory
 COPY package*.json ./
 
-# Install the app dependencies
-RUN npm install
+# Clear npm cache (optional)
+RUN npm cache clean --force
+
+# Install app dependencies
+RUN npm install --quiet --production=false
 
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Install ESLint and plugins
-RUN npm install eslint eslint-plugin-react eslint-plugin-jsx-a11y eslint-plugin-react-hooks --save-dev
+# Install ESLint and plugins (if needed)
+# RUN npm install eslint eslint-plugin-react eslint-plugin-jsx-a11y eslint-plugin-react-hooks --save-dev
 
-# Create an ESLint configuration file
-RUN echo '{ \
-  "env": { \
-    "browser": true, \
-    "es2021": true \
-  }, \
-  "extends": [ \
-    "eslint:recommended", \
-    "plugin:react/recommended", \
-    "plugin:jsx-a11y/recommended" \
-  ], \
-  "parserOptions": { \
-    "ecmaFeatures": { \
-      "jsx": true \
-    }, \
-    "ecmaVersion": 12, \
-    "sourceType": "module" \
-  }, \
-  "plugins": [ \
-    "react", \
-    "jsx-a11y", \
-    "react-hooks" \
-  ], \
-  "rules": { \
-    "no-unused-vars": "warn", \
-    "react-hooks/exhaustive-deps": "warn", \
-    "jsx-a11y/anchor-is-valid": "warn" \
-  } \
-}' > .eslintrc.json
+# Optionally, create an ESLint configuration file (if needed)
+# RUN echo '{ ... }' > .eslintrc.json
 
-# Run ESLint and ignore warnings
-RUN npx eslint . || true
+# Run ESLint (if needed)
+# RUN npx eslint . || true
 
-# Build the application
+# Debugging: Output npm logs for troubleshooting
+RUN npm --version
+RUN node --version
+RUN npm config list
+RUN npm list
+
+# Run the build command
 RUN npm run build
 
 # Expose the port your app runs on
